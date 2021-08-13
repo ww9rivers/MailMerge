@@ -66,8 +66,8 @@ var c9r = {
   init: function() {
     if (c9r.doc == null) {
       c9r.util = new CommonUtils;
-      var doc = c9r.doc = SpreadsheetApp.getActiveSpreadsheet();
-      c9r.defaultSetting.sender = doc.getOwner().getEmail();
+      let doc = c9r.doc = SpreadsheetApp.getActiveSpreadsheet();
+      c9r.defaultSetting.sender = (doc.getOwner()||doc.getEditors()[0]).getEmail();
       c9r.defaultSetting.Year = c9r.defaultSetting.today.getFullYear()-1;
       var settings = c9r.setting = getDict('Settings', c9r.defaultSetting);
       var listsheet = c9r.listsheet = doc.getSheetByName(settings.list);
